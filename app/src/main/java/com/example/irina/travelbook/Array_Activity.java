@@ -41,16 +41,17 @@ public class Array_Activity extends AppCompatActivity {
                 listView.getItemAtPosition(position);
                 String text = listView.getItemAtPosition(position).toString();
                 startActivity(new Intent(Array_Activity.this, ActivityMemory.class));
-                saveText();
+                saveText(text);
                 Log.d(LOG_TAG, "You choose: " + text);
 
             }
         });
     }
 
-    void saveText() {
+    void saveText(String text) {
         sPref = getSharedPreferences("Country", MODE_PRIVATE );
         SharedPreferences.Editor editor = sPref.edit(); //для редактирования данных(передать в putString)
-        editor.putString(COUNTRY_NAME, )
+        editor.putString(COUNTRY_NAME, text);
+        editor.apply();
     }
 }
