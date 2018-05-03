@@ -47,17 +47,17 @@ public final class Memory {
         private Builder() {
         }
 
-        private Builder id(long id) {
+        public Builder id(long id) {
             this.id = id;
             return this;
         }
 
-        private Builder description(String description) {
+        public Builder description(String description) {
             this.description = description;
             return this;
         }
 
-        private Builder photos(List<Photo> photos) {
+        public Builder photos(List<Photo> photos) {
             this.photos = photos;
             return this;
         }

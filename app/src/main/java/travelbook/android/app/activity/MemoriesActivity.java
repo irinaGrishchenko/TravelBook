@@ -9,12 +9,13 @@ import java.util.List;
 import travelbook.android.app.R;
 import travelbook.android.app.data.MemoriesDao;
 import travelbook.android.app.data.Memory;
+import travelbook.android.app.data.TravelBookDatabaseOpenHelper;
 
 public class MemoriesActivity extends AppCompatActivity {
 
     private static final String TAG = MemoriesActivity.class.getSimpleName();
 
-    private final MemoriesDao memoriesDao = new MemoriesDao();
+    private MemoriesDao memoriesDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,7 @@ public class MemoriesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_memories);
         setTitle(R.string.memories_title);
 
+        memoriesDao = new MemoriesDao(new TravelBookDatabaseOpenHelper(getApplicationContext()));
         final List<Memory> memories = memoriesDao.fetchAll();
         Log.d(TAG, "Fetched memories: " + memories);
     }
